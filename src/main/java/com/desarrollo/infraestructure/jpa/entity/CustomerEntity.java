@@ -21,10 +21,8 @@ public class CustomerEntity {
     private String dni;
     @Column(name = "mobile")
     private String mobile;
-    @Column(name = "address")
     @OneToOne
-    @JoinColumn(name = "fk_id_address")
+    @JoinColumn(name = "fk_id_address",updatable = false, nullable = false)
     private AddressEntity address;
-
 
 }
