@@ -18,9 +18,9 @@ public class OrderDetailEntity {
     private Integer id;
     @Column(name = "code_order")
     private UUID codeOrder;
-    @Column(name = "quantity")
+    @Column(name = "amount_total")
     private BigDecimal amountTotal;
-    @Column(name = "quantity")
+    @Column(name = "iva")
     private BigDecimal iva;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "product_id")

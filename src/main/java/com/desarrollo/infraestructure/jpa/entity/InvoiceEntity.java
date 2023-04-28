@@ -20,5 +20,8 @@ public class InvoiceEntity {
     @JoinColumn(name = "fk_id_order",updatable = false, nullable = false)
     private OrderEntity orderEntity;
 
+    @Column(name = "date")
+    private LocalDateTime date;
+
 
 }
