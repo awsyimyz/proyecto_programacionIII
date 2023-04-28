@@ -16,8 +16,6 @@ public class InvoiceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
-    @Column(name = "street")
-    private LocalDateTime date;
     @OneToOne
     @JoinColumn(name = "fk_id_order",updatable = false, nullable = false)
     private OrderEntity orderEntity;
