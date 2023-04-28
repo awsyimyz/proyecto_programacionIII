@@ -21,7 +21,7 @@ public class InvoiceEntity {
 
     @OneToOne
     @JoinColumn(name = "fk_id_order",updatable = false, nullable = false)
-    private Order order;
+    private OrderEntity orderEntity;
 
 
 }

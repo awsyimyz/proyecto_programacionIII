@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Table(name = "order")
 @Builder
 @Data
-public class Order {
+public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -20,5 +20,5 @@ public class Order {
     private String status;
     @OneToOne
     @JoinColumn(name = "fk_order_detail",updatable = false, nullable = false)
-    private OrderDetail orderDetail;
+    private OrderDetailEntity orderDetailEntity;
 }

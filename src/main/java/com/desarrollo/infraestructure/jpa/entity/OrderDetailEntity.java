@@ -12,7 +12,7 @@ import java.util.UUID;
 @Table(name = "order_detail")
 @Builder
 @Data
-public class OrderDetail {
+public class OrderDetailEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
