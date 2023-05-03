@@ -2,13 +2,14 @@ package com.desarrollo.infraestructure.jpa.entity;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "order")
-@Builder
+@Table(name = "orders")
+@NoArgsConstructor
 @Data
 public class OrderEntity {
     @Id
@@ -21,4 +22,5 @@ public class OrderEntity {
     @OneToOne
     @JoinColumn(name = "fk_order_detail",updatable = false, nullable = false)
     private OrderDetailEntity orderDetailEntity;
+
 }

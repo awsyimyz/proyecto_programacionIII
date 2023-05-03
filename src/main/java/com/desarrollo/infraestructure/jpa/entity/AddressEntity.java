@@ -2,12 +2,13 @@ package com.desarrollo.infraestructure.jpa.entity;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "address")
-@Builder
+@NoArgsConstructor
 @Data
 public class AddressEntity {
 

@@ -2,18 +2,19 @@ package com.desarrollo.infraestructure.jpa.entity;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
 @Table(name = "delivery")
-@Builder
+@NoArgsConstructor
 @Data
 public class DeliveryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Integer id;
     @Column(name = "name")
     private String name;
     @Column(name = "surname")

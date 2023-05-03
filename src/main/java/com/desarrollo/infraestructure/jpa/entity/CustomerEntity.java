@@ -2,12 +2,13 @@ package com.desarrollo.infraestructure.jpa.entity;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "customer")
-@Builder
+@NoArgsConstructor
 @Data
 public class CustomerEntity {
     @Id

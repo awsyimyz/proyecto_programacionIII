@@ -2,6 +2,7 @@ package com.desarrollo.infraestructure.jpa.entity;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -10,7 +11,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "order_detail")
-@Builder
+@NoArgsConstructor
 @Data
 public class OrderDetailEntity {
     @Id
@@ -22,8 +23,8 @@ public class OrderDetailEntity {
     private BigDecimal amountTotal;
     @Column(name = "iva")
     private BigDecimal iva;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "product_id")
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_order_detail")
     private List<ProductEntity> product;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
