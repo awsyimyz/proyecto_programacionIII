@@ -1,15 +1,15 @@
 package com.desarrollo.infraestructure.jpa.mapper;
 
-import com.desarrollo.domain.model.AddressDomain;
-import com.desarrollo.infraestructure.jpa.entity.AddressEntity;
+import com.desarrollo.domain.model.ProductDomain;
+import com.desarrollo.infraestructure.jpa.entity.ProductEntity;
 import org.mapstruct.*;
 
 @Mapper(collectionMappingStrategy = CollectionMappingStrategy.ADDER_PREFERRED, nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
         nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL, injectionStrategy = InjectionStrategy.CONSTRUCTOR,
         componentModel = "spring")
-public interface AddressEntityMapper {
+public interface ProductEntityMapper {
 
-    AddressEntity toEntity(AddressDomain domain);
+    ProductDomain toDomain(ProductEntity entity);
 
-    AddressDomain toDomain(AddressEntity entity);
+    ProductEntity toEntity(ProductDomain domain);
 }

@@ -2,8 +2,7 @@ package com.desarrollo.domain.model;
 
 import lombok.*;
 
-@NoArgsConstructor
-@AllArgsConstructor
+@Builder
 @Data
 public class AddressDomain {
     private Integer id;

@@ -17,7 +17,7 @@ public class ProductEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "code")
-    private UUID code_product;
+    private UUID codeProduct;
     @Column(name = "name")
     private String name;
     @Column(name = "description")

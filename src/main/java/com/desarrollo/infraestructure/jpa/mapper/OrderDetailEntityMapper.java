@@ -1,18 +1,17 @@
 package com.desarrollo.infraestructure.jpa.mapper;
 
-import com.desarrollo.domain.model.CustomerDomain;
+import com.desarrollo.domain.model.OrderDetailDomain;
 import com.desarrollo.domain.model.ProductDomain;
-import com.desarrollo.infraestructure.jpa.entity.CustomerEntity;
+import com.desarrollo.infraestructure.jpa.entity.OrderDetailEntity;
 import com.desarrollo.infraestructure.jpa.entity.ProductEntity;
 import org.mapstruct.*;
 
 @Mapper(collectionMappingStrategy = CollectionMappingStrategy.ADDER_PREFERRED, nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
         nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL, injectionStrategy = InjectionStrategy.CONSTRUCTOR,
         componentModel = "spring")
-public interface CustomerEntityMapper {
+public interface OrderDetailEntityMapper {
+    OrderDetailDomain toDomain(OrderDetailEntity entity);
 
-    CustomerEntity toEntity(CustomerDomain domain);
-
-    CustomerDomain toDomain(CustomerEntity entity);
-
+    OrderDetailEntity toEntity(OrderDetailDomain domain);
+    ProductEntity toEntity(ProductDomain productDomain);
 }

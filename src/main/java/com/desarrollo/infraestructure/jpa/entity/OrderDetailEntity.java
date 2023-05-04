@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,7 +30,17 @@ public class OrderDetailEntity {
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "fk_id_customer")
-    private CustomerEntity customerEntity;
+    private CustomerEntity customer;
+
+
+    public void addProduct(ProductEntity productEntity){
+        if (productEntity != null){
+            if (product == null){
+                product = new ArrayList<>();
+            }
+            product.add(productEntity);
+        }
+    }
 
 
 }

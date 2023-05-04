@@ -1,20 +1,19 @@
 package com.desarrollo.domain.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
+@Builder
 @Data
-public class CustomerDomain extends PersonDomain{
+public class CustomerDomain {
     private Integer id;
-    private AddressDomain addressDomain;
+    private String name;
+    private String surname;
+    private String dni;
+    private String mobile;
+    private AddressDomain address;
 
-    @Override
-    public String toString() {
-        return  super.toString()+" "+" CustomerDomain{" +
-                "id=" + id +
-                '}';
-    }
+
 }
