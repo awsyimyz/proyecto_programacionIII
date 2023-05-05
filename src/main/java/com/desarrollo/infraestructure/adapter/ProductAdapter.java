@@ -6,6 +6,7 @@ import com.desarrollo.infraestructure.jpa.mapper.ProductEntityMapper;
 import com.desarrollo.infraestructure.jpa.repository.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Slf4j
@@ -21,6 +22,8 @@ public class ProductAdapter implements ProductPort {
     @Override
     public void save(ProductDomain domain) {
         log.info(" [INFRAESTRUCTURE] Pesistiendo un Product {} ",domain);
+        domain.setIva(getIva(domain));
+        domain.setPriceTotal(getPriceTotal(domain));
         repository.save(mapper.toEntity(domain));
     }
 
@@ -35,4 +38,19 @@ public class ProductAdapter implements ProductPort {
         log.info(" [INFRAESTRUCTURE] Recuperar un product por su name {} ",name);
         return mapper.toDomain(repository.findByNameIgnoreCase(name));
     }
+
+    private BigDecimal getIva(ProductDomain domain){
+        double iva = 0;
+        if (domain.getVerifyIva()){
+          iva =  domain.getPrice().doubleValue() * 21 /100;
+        }
+        return new BigDecimal(iva);
+    }
+
+    private BigDecimal getPriceTotal(ProductDomain domain){
+        double priceTotal = getIva(domain).doubleValue() + domain.getPrice().doubleValue();
+        return new BigDecimal(priceTotal);
+    }
+
+
 }

@@ -13,6 +13,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -52,31 +53,40 @@ public class ProyectoUphApplication {
                 .address(addressDomain)
                 .build();
         //customerService.save(customerDomain);
-        //log.info("Este es un customer : " + customerService.getByDni("Y6936130C"));
+        //log.info("Este es un customer : " + customerService.getByDni("Y6936124X"));
 
         ProductDomain productDomain = ProductDomain.builder()
                 .codeProduct(UUID.randomUUID())
-                .description("Articulo para limpieza 100ml")
-                .name("Azistin")
-                .price(new BigDecimal(100.35))
+                .description("Producto para cocina 1lb")
+                .name("Carne para asar")
+                .price(new BigDecimal(150.15))
+                .verifyIva(false)
                 .build();
 
         //productService.save(productDomain);
-        //log.info(" Un product name : " + productService.getByName("azistin"));
+        //log.info(" Un product name : " + productService.getByName("Carne para asar"));
         //log.info(" Un product code: " + productService.getByCodeProduct("d5f4402e-8144-45a1-84c9-012cd0e79279"));
 
         CustomerDomain customer = customerService.getByDni("Y6936124X");
-        ProductDomain product = productService.getByName("azistin");
-        List<ProductDomain>list = List.of(product);
+        //ProductDomain product = productService.getByName("azistin");
+        ProductDomain product1 = productService.getByName("Carne para asar");
+        List<ProductDomain>list = new ArrayList<>();
+        //list.add(product);
+        list.add(product1);
+
         OrderDetailDomain orderDetailDomain = OrderDetailDomain
                 .builder()
-                .iva(new BigDecimal(25.35))
-                .amountTotal(new BigDecimal(190.66))
+                .iva(new BigDecimal(40.35))
+                .amountTotal(new BigDecimal(500.66))
                 .codeOrder(UUID.randomUUID())
                 .customer(customer)
                 .product(list)
                 .build();
+
+
         orderDetailService.save(orderDetailDomain);
+
+        log.info("OrderDetail {} ",orderDetailService.getById(1));
 
     }
 

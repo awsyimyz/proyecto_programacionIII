@@ -14,4 +14,7 @@ public class ProductDomain {
     private String name;
     private String description;
     private BigDecimal price;
+    private BigDecimal iva;
+    private Boolean verifyIva;
+    private BigDecimal priceTotal;
 }

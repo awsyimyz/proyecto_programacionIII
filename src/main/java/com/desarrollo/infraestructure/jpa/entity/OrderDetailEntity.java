@@ -24,11 +24,10 @@ public class OrderDetailEntity {
     private BigDecimal amountTotal;
     @Column(name = "iva")
     private BigDecimal iva;
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_order_detail")
+    @OneToMany(mappedBy = "orderDetail",cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<ProductEntity> product;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "fk_id_customer")
     private CustomerEntity customer;
 

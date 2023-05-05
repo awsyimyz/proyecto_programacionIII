@@ -31,6 +31,12 @@ public class OrderDetailAdapter implements OrderDetailPort {
         saveProduct(orderDetailEntity,domain.getProduct());
     }
 
+    @Override
+    public OrderDetailDomain findById(int id) {
+        log.info(" [INFRAESTRUCTURE] Recuperando una orderDetail por su ID {} ",id);
+        return orderDetailEntityMapper.toDomain(orderDetailRepository.findById(id).orElse(null));
+    }
+
     private void saveProduct(OrderDetailEntity orderDetailEntity, List<ProductDomain>list){
         if (list!=null){
             for (ProductDomain productDomain : list){

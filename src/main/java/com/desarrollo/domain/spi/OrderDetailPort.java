@@ -5,4 +5,6 @@ import com.desarrollo.domain.model.OrderDetailDomain;
 public interface OrderDetailPort {
 
     void save(OrderDetailDomain domain);
+
+    OrderDetailDomain findById(int id);
 }

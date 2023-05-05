@@ -24,5 +24,13 @@ public class ProductEntity {
     private String description;
     @Column(name = "price")
     private BigDecimal price;
+    @Column(name = "iva")
+    private BigDecimal iva;
+    @Column(name = "verify_iva")
+    private Boolean verifyIva;
+    @Column(name = "price_total")
+    private BigDecimal priceTotal;
+    @ManyToOne
+    private OrderDetailEntity orderDetail;
 
 }
