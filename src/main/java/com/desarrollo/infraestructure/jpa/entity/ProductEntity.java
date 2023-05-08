@@ -30,7 +30,5 @@ public class ProductEntity {
     private Boolean verifyIva;
     @Column(name = "price_total")
     private BigDecimal priceTotal;
-    @ManyToOne
-    private OrderDetailEntity orderDetail;
 
 }

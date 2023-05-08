@@ -58,37 +58,52 @@ public class ProyectoUphApplication {
         ProductDomain productDomain = ProductDomain.builder()
                 .codeProduct(UUID.randomUUID())
                 .description("Producto para cocina 1lb")
-                .name("Carne para asar")
+                .name("Hamburguesa")
                 .price(new BigDecimal(150.15))
                 .verifyIva(false)
                 .build();
 
         //productService.save(productDomain);
-        //log.info(" Un product name : " + productService.getByName("Carne para asar"));
+        //log.info(" Un product name : " + productService.getByName("Enchiladas"));
         //log.info(" Un product code: " + productService.getByCodeProduct("d5f4402e-8144-45a1-84c9-012cd0e79279"));
+        List<ProductDomain>list = new ArrayList<>();
 
         CustomerDomain customer = customerService.getByDni("Y6936124X");
-        //ProductDomain product = productService.getByName("azistin");
-        ProductDomain product1 = productService.getByName("Carne para asar");
-        List<ProductDomain>list = new ArrayList<>();
-        //list.add(product);
+        ProductDomain product = productService.getByName("Enchiladas");
+        ProductDomain product1 = productService.getByName("Hamburguesa");
+        list.add(product);
         list.add(product1);
-
         OrderDetailDomain orderDetailDomain = OrderDetailDomain
                 .builder()
-                .iva(new BigDecimal(40.35))
-                .amountTotal(new BigDecimal(500.66))
-                .codeOrder(UUID.randomUUID())
                 .customer(customer)
+                .codeOrder(UUID.randomUUID())
                 .product(list)
+                .iva(new BigDecimal(String.valueOf(getIva(list))))
+                .amountTotal(new BigDecimal(String.valueOf(getAmountTotal(list))))
                 .build();
 
 
         orderDetailService.save(orderDetailDomain);
+        OrderDetailDomain domain1 = orderDetailService.getById(1);
+        domain1.setProduct(orderDetailDomain.getProduct());
 
-        log.info("OrderDetail {} ",orderDetailService.getById(1));
+        log.info("OrderDetail {} ",domain1);
 
     }
 
+    public static BigDecimal getIva(List<ProductDomain>list){
+        double total = 0;
+        for (ProductDomain productDomain : list){
+          total =  productDomain.getIva().doubleValue()+productDomain.getIva().doubleValue();
+        }
+        return new BigDecimal(total);
+    }
 
+    public static BigDecimal getAmountTotal(List<ProductDomain>list){
+        double total = 0;
+        for (ProductDomain productDomain : list){
+            total =  productDomain.getPriceTotal().doubleValue()+productDomain.getPriceTotal().doubleValue();
+        }
+        return new BigDecimal(total);
+    }
 }

@@ -28,7 +28,6 @@ public class OrderDetailAdapter implements OrderDetailPort {
     public void save(OrderDetailDomain domain) {
         log.info(" [INFRAESTRUCTURE] Pesistiendo una OrderDetail {} ",domain);
         OrderDetailEntity orderDetailEntity = orderDetailRepository.save(orderDetailEntityMapper.toEntity(domain));
-        saveProduct(orderDetailEntity,domain.getProduct());
     }
 
     @Override
@@ -37,15 +36,7 @@ public class OrderDetailAdapter implements OrderDetailPort {
         return orderDetailEntityMapper.toDomain(orderDetailRepository.findById(id).orElse(null));
     }
 
-    private void saveProduct(OrderDetailEntity orderDetailEntity, List<ProductDomain>list){
-        if (list!=null){
-            for (ProductDomain productDomain : list){
-                ProductEntity productEntity = orderDetailEntityMapper.toEntity(productDomain);
-                productRepository.save(productEntity);
-                orderDetailEntity.addProduct(productEntity);
-            }
-        }
-    }
+
 
 
 }

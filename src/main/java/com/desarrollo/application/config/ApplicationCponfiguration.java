@@ -20,7 +20,7 @@ public class ApplicationCponfiguration {
     }
 
     @Bean
-    public OrderDetailService getOrderDetailService(final OrderDetailPort orderDetailPort){
-        return new OrderDetailServiceImpl(orderDetailPort);
+    public OrderDetailService getOrderDetailService(final OrderDetailPort orderDetailPort,final ProductPort productPort){
+        return new OrderDetailServiceImpl(orderDetailPort, productPort);
     }
 }

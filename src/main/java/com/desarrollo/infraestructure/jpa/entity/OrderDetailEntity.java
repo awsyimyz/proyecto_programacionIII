@@ -24,22 +24,13 @@ public class OrderDetailEntity {
     private BigDecimal amountTotal;
     @Column(name = "iva")
     private BigDecimal iva;
-    @OneToMany(mappedBy = "orderDetail",cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-    private List<ProductEntity> product;
+
 
     @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "fk_id_customer")
     private CustomerEntity customer;
 
 
-    public void addProduct(ProductEntity productEntity){
-        if (productEntity != null){
-            if (product == null){
-                product = new ArrayList<>();
-            }
-            product.add(productEntity);
-        }
-    }
+
 
 
 }
