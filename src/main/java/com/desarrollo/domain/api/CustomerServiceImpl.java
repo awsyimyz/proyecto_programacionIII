@@ -4,6 +4,8 @@ import com.desarrollo.domain.model.CustomerDomain;
 import com.desarrollo.domain.spi.CustomerPort;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
+
 @Slf4j
 public class CustomerServiceImpl implements CustomerService {
 
@@ -20,10 +22,14 @@ public class CustomerServiceImpl implements CustomerService {
         log.info(" [DOMAIN] Pesistiendo un customer {} ", domain);
         customerPort.save(domain);
     }
-
     @Override
     public CustomerDomain getByDni(String dni) {
         log.info(" [DOMAIN] Recuperando un customer por su Dni {} ", dni);
         return customerPort.findCustomerByDni(dni);
+    }
+    @Override
+    public List<CustomerDomain> getAll() {
+        log.info(" [DOMAIN] Recuperando una lista customer");
+        return customerPort.listAll();
     }
 }

@@ -34,25 +34,28 @@ public class ProyectoUphApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ProyectoUphApplication.class, args);
-
+/*
         AddressDomain addressDomain = AddressDomain
                 .builder()
-                .city("Fuenlabrada")
-                .codePostal("28944")
-                .numberStreet("4B")
+                .city("Mostoles")
+                .codePostal("28935")
+                .numberStreet("2A")
                 .province("Madrid")
-                .street("Extremadura")
-                .description("Fente a supermecado DIA")
+                .street("Pablo Segundo")
+                .description("Fente a Estacion de renfe")
                 .build();
         CustomerDomain customerDomain = CustomerDomain
                 .builder()
-                .name("Alex")
-                .surname("Lopez")
-                .mobile("632877894")
-                .dni("Y6936124X")
+                .name("Marcos Jose")
+                .surname("Santos Medina")
+                .mobile("602169807")
+                .dni("Y8206435X")
                 .address(addressDomain)
                 .build();
-        //customerService.save(customerDomain);
+        customerService.save(customerDomain);
+
+ */
+        /*
         //log.info("Este es un customer : " + customerService.getByDni("Y6936124X"));
 
         ProductDomain productDomain = ProductDomain.builder()
@@ -88,6 +91,8 @@ public class ProyectoUphApplication {
         domain1.setProduct(orderDetailDomain.getProduct());
 
         log.info("OrderDetail {} ",domain1);
+
+ */
 
     }
 

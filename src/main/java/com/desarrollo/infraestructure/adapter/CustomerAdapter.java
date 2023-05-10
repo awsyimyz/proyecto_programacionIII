@@ -6,6 +6,8 @@ import com.desarrollo.infraestructure.jpa.mapper.CustomerEntityMapper;
 import com.desarrollo.infraestructure.jpa.repository.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
+
 @Slf4j
 public class CustomerAdapter implements CustomerPort {
 
@@ -28,5 +30,11 @@ public class CustomerAdapter implements CustomerPort {
     public CustomerDomain findCustomerByDni(String dni) {
         log.info(" [INFRAESTRUCTURE] Recuperando un customer por su Dni {} ",dni);
         return mapper.toDomain(repository.findByDni(dni));
+    }
+
+    @Override
+    public List<CustomerDomain> listAll() {
+        log.info(" [INFRAESTRUCTURE] Recuperando la lista de customer");
+        return mapper.toListDomain(repository.findAll());
     }
 }
