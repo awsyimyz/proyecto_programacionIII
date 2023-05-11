@@ -21,48 +21,70 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-           <h1 class="text-center">Registro de Clientes</h1>
+            <h1 class="text-center">Registro de Clientes</h1>
             <div class="card-body">
                 <form th:action="@{/customer}" th:object="${customers}" method="POST">
+                    <br>
                     <div class="form-group">
                         <label>Nombre : </label>
                         <input type="text" name="name" th:field="*{name}" class="form-control" placeholder="Nombre : ">
                     </div>
+                    <br>
                     <div class="form-group">
                         <label>Apellido : </label>
-                        <input type="text" name="surname" th:field="*{surname}" class="form-control" placeholder="Apellido : ">
+                        <input type="text" name="surname" th:field="*{surname}" class="form-control"
+                               placeholder="Apellido : ">
                     </div>
+                    <br>
                     <div class="form-group">
                         <label>Dni : </label>
                         <input type="text" name="dni" th:field="*{dni}" class="form-control" placeholder="Dni : ">
                     </div>
+                    <br>
                     <div class="form-group">
                         <label>Telefono : </label>
-                        <input type="text" name="mobile" th:field="*{mobile}" class="form-control" placeholder="Telefono : ">
+                        <input type="text" name="mobile" th:field="*{mobile}" class="form-control"
+                               placeholder="Telefono : ">
                     </div>
+                    <br>
                     <div class="form-group">
                         <label>Ciudad : </label>
-                        <input type="text" name="city" th:field="*{city}" class="form-control" placeholder="Ciudad : ">
+                        <input type="text" name="city" th:field="${customers.address.city}" class="form-control"
+                               placeholder="Ciudad : ">
                     </div>
+                    <br>
                     <div class="form-group">
                         <label>Codigo Postal : </label>
-                        <input type="text" name="codePostal" th:field="*{codePostal}" class="form-control" placeholder="Codigo Postal : ">
+                        <input type="text" name="codePostal" th:field="${customers.address.codePostal}"
+                               class="form-control" placeholder="Codigo Postal : ">
                     </div>
+                    <br>
                     <div class="form-group">
                         <label>Descripcion : </label>
-                        <input type="text" name="description" th:field="*{description}" class="form-control" placeholder="Descripcion de Direccion : ">
+                        <input type="text" name="description" th:field="${customers.address.description}"
+                               class="form-control" placeholder="Descripcion de Direccion : ">
                     </div>
+                    <br>
                     <div class="form-group">
                         <label>Numero de Calle : </label>
-                        <input type="text" name="numberStreet" th:field="*{numberStreet}" class="form-control" placeholder="Numero de Calle : ">
+                        <input type="text" name="numberStreet" th:field="${customers.address.numberStreet}"
+                               class="form-control" placeholder="Numero de Calle : ">
                     </div>
+                    <br>
                     <div class="form-group">
                         <label>Provincia : </label>
-                        <input type="text" name="province" th:field="*{province}" class="form-control" placeholder="Provincia : ">
+                        <input type="text" name="province" th:field="${customers.address.province}" class="form-control"
+                               placeholder="Provincia : ">
                     </div>
+                    <br>
                     <div class="form-group">
                         <label>Calle : </label>
-                        <input type="text" name="street" th:field="*{street}" class="form-control" placeholder="Calle : ">
+                        <input type="text" name="street" th:field="${customers.address.street}" class="form-control"
+                               placeholder="Calle : ">
+                    </div>
+                    <br>
+                    <div class="box-footer">
+                        <button class="btn btn-success">Guardar</button>
                     </div>
                 </form>
             </div>

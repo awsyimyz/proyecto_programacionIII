@@ -1,5 +1,6 @@
 package com.desarrollo.domain.api;
 
+import com.desarrollo.domain.model.AddressDomain;
 import com.desarrollo.domain.model.CustomerDomain;
 import com.desarrollo.domain.spi.CustomerPort;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +21,8 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void save(CustomerDomain domain) {
         log.info(" [DOMAIN] Pesistiendo un customer {} ", domain);
+        AddressDomain addressDomain = AddressDomain.builder().build();
+        domain.setAddress(addressDomain);
         customerPort.save(domain);
     }
     @Override
