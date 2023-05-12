@@ -8,4 +8,8 @@ public interface CustomerPort {
     void save(CustomerDomain domain);
     CustomerDomain findCustomerByDni(String dni);
     List<CustomerDomain>listAll();
+    void delete(int id);
+    CustomerDomain findById(int id);
+
+
 }

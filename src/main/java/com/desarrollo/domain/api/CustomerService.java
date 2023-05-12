@@ -8,6 +8,8 @@ public interface CustomerService {
 
     void save(CustomerDomain domain);
     CustomerDomain getByDni(String dni);
-
     List<CustomerDomain>getAll();
+    void delete(int id);
+
+    CustomerDomain getById(int id);
 }

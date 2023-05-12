@@ -21,8 +21,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void save(CustomerDomain domain) {
         log.info(" [DOMAIN] Pesistiendo un customer {} ", domain);
-        AddressDomain addressDomain = AddressDomain.builder().build();
-        domain.setAddress(addressDomain);
+        domain.setAddress(domain.getAddress());
         customerPort.save(domain);
     }
     @Override
@@ -35,4 +34,18 @@ public class CustomerServiceImpl implements CustomerService {
         log.info(" [DOMAIN] Recuperando una lista customer");
         return customerPort.listAll();
     }
+
+    @Override
+    public void delete(int id) {
+        log.info(" [DOMAIN] borrando un customer");
+        customerPort.delete(id);
+    }
+
+    @Override
+    public CustomerDomain getById(int id) {
+        log.info(" [DOMAIN] Recuperando un customer por su Id {} ", id);
+        return customerPort.findById(id);
+    }
+
+
 }
