@@ -47,5 +47,10 @@ public class CustomerServiceImpl implements CustomerService {
         return customerPort.findById(id);
     }
 
+    @Override
+    public void save(AddressDomain domain) {
+        log.info(" [DOMAIN] Pesistiendo una Direccion {} ", domain);
+    }
+
 
 }

@@ -1,9 +1,7 @@
 package com.desarrollo.infraestructure.jpa.mapper;
 
 import com.desarrollo.domain.model.CustomerDomain;
-import com.desarrollo.domain.model.ProductDomain;
 import com.desarrollo.infraestructure.jpa.entity.CustomerEntity;
-import com.desarrollo.infraestructure.jpa.entity.ProductEntity;
 import org.mapstruct.*;
 
 import java.util.List;

@@ -9,6 +9,7 @@ import com.desarrollo.infraestructure.adapter.ProductAdapter;
 import com.desarrollo.infraestructure.jpa.mapper.CustomerEntityMapper;
 import com.desarrollo.infraestructure.jpa.mapper.OrderDetailEntityMapper;
 import com.desarrollo.infraestructure.jpa.mapper.ProductEntityMapper;
+import com.desarrollo.infraestructure.jpa.repository.AddressRepository;
 import com.desarrollo.infraestructure.jpa.repository.CustomerRepository;
 import com.desarrollo.infraestructure.jpa.repository.OrderDetailRepository;
 import com.desarrollo.infraestructure.jpa.repository.ProductRepository;
@@ -19,8 +20,8 @@ import org.springframework.context.annotation.Configuration;
 public class PersistenceConfiguration {
 
     @Bean
-    public CustomerPort getCustomerPort(final CustomerRepository repository, final CustomerEntityMapper mapper) {
-        return new CustomerAdapter(repository, mapper);
+    public CustomerPort getCustomerPort(final CustomerRepository repository, final AddressRepository addressRepository,final CustomerEntityMapper mapper) {
+        return new CustomerAdapter(repository, addressRepository, mapper);
     }
 
     @Bean

@@ -1,9 +1,11 @@
 package com.desarrollo.infraestructure.adapter;
 
+import com.desarrollo.domain.model.AddressDomain;
 import com.desarrollo.domain.model.CustomerDomain;
 import com.desarrollo.domain.spi.CustomerPort;
 import com.desarrollo.infraestructure.jpa.entity.CustomerEntity;
 import com.desarrollo.infraestructure.jpa.mapper.CustomerEntityMapper;
+import com.desarrollo.infraestructure.jpa.repository.AddressRepository;
 import com.desarrollo.infraestructure.jpa.repository.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,11 +16,13 @@ import java.util.Optional;
 public class CustomerAdapter implements CustomerPort {
 
   private final CustomerRepository repository;
+  private final AddressRepository addressRepository;
 
   private final CustomerEntityMapper mapper;
 
-    public CustomerAdapter(CustomerRepository repository, CustomerEntityMapper mapper) {
+    public CustomerAdapter(CustomerRepository repository, AddressRepository addressRepository, CustomerEntityMapper mapper) {
         this.repository = repository;
+        this.addressRepository = addressRepository;
         this.mapper = mapper;
     }
 
@@ -52,5 +56,10 @@ public class CustomerAdapter implements CustomerPort {
         log.info(" [INFRAESTRUCTURE] Recuperando un customer por su Id {} ",id);
         Optional<CustomerEntity>customerDomain = repository.findById(id);
         return customerDomain.map(mapper::toDomain).orElse(null);
+    }
+
+    @Override
+    public void save(AddressDomain addressDomain) {
+        log.info(" [INFRAESTRUCTURE] Pesistiendo una Direccion {} ",addressDomain);
     }
 }

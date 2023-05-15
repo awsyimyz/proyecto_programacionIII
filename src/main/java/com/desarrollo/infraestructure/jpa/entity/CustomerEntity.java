@@ -23,7 +23,7 @@ public class CustomerEntity {
     @Column(name = "mobile")
     private String mobile;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_id_address")
+    @JoinColumn(name = "fk_id_address", updatable = false)
     private AddressEntity address;
 
 

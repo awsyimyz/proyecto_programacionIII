@@ -49,21 +49,32 @@ public class CustomerController {
         CustomerDomain oldCustomer = customerService.getById(id);
         getCustomerUpdate(oldCustomer,newCustomer);
         customerService.save(oldCustomer);
-        return "redirect:customer";
+        //customerService.save(oldCustomer.getAddress());
+        return "redirect:/customer";
     }
 
     @GetMapping("/customer/{id}")
     public String deleteCustomer(@PathVariable int id){
         customerService.delete(id);
-        return "redirect:customer";
+        return "redirect:/customer";
     }
 
     private void getCustomerUpdate(CustomerDomain oldCustomer, CustomerDomain newCustomer){
         oldCustomer.setId(newCustomer.getId());
-        oldCustomer.setName(newCustomer.getName());
-        oldCustomer.setSurname(newCustomer.getSurname());
+        oldCustomer.setName(oldCustomer.getName());
+        oldCustomer.setSurname(oldCustomer.getSurname());
         oldCustomer.setMobile(newCustomer.getMobile());
-        oldCustomer.setDni(newCustomer.getDni());
-        oldCustomer.setAddress(newCustomer.getAddress());
+        oldCustomer.setDni(oldCustomer.getDni());
+        oldCustomer.setAddress(getAddressUpdate(oldCustomer.getAddress(),newCustomer.getAddress()));
+    }
+
+    private AddressDomain getAddressUpdate(AddressDomain oldAddress,AddressDomain newAddress){
+        oldAddress.setId(newAddress.getId());
+        oldAddress.setDescription(newAddress.getDescription());
+        oldAddress.setStreet(newAddress.getStreet());
+        oldAddress.setCity(newAddress.getCity());
+        oldAddress.setProvince(newAddress.getProvince());
+        oldAddress.setCodePostal(newAddress.getCodePostal());
+        return oldAddress;
     }
 }
